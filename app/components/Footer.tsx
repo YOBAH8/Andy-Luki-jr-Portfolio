@@ -11,7 +11,7 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {/* Brand Section */}
           <div className="space-y-4">
-            <h3 className="font-great-vibes text-3xl text-white">AndyLukJr</h3>
+            <h3 className="font-great-vibes text-3xl text-white">AndyLukiJr</h3>
             <p className="text-gray-400 text-sm leading-relaxed">
               Capturing moments that tell stories, preserving memories that last forever.
             </p>

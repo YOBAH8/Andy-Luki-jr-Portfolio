@@ -99,7 +99,7 @@ export default function Home() {
       <header className="fixed top-0 left-0 right-0 z-10 bg-[#0C2340]/80 backdrop-blur-sm border-b border-[#0C2340]">
         <div className="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between">
           <div className="flex items-center">
-            <span className="font-great-vibes text-4xl text-white">AndyLukJr</span>
+            <span className="font-great-vibes text-4xl text-white">AndyLukiJr</span>
           </div>
           <div className="flex items-center">
             <Dropdown />
