@@ -22,7 +22,7 @@ export default function Home() {
           setError(data.error);
           setImages([]);
         } else {
-          setImages(data.map((img: any) => ({ ...img, likes: img.likes || [], colors: img.colors || [], views: img.views || 0 })));
+          setImages(data.map((img: ImageType) => ({ ...img, likes: img.likes || [], colors: img.colors || [], views: img.views || 0 })));
         }
         setLoading(false);
       })
@@ -37,7 +37,7 @@ export default function Home() {
 
   const handleLike = async (image: ImageType, event?: React.MouseEvent) => {
     event?.stopPropagation();
-    const userId = (session?.user as any)?.id;
+    const userId = (session?.user as { id?: string })?.id;
     if (!userId || !image) return;
 
     const liked = image.likes?.includes(userId);
