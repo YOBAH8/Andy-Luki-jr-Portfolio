@@ -60,14 +60,7 @@ export default function Dropdown() {
                 className="block px-4 py-2 text-base font-mono font-bold text-white hover:bg-gray-700 text-center"
                 onClick={() => setIsOpen(false)}
               >
-                Sign In
-              </Link>
-              <Link
-                href="/auth/signup"
-                className="block px-4 py-2 text-base font-mono font-bold text-white hover:bg-gray-700 text-center"
-                onClick={() => setIsOpen(false)}
-              >
-                Sign Up
+                Admin Login
               </Link>
             </>
           )}

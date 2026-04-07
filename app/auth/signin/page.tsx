@@ -42,7 +42,7 @@ export default function SignIn() {
   return (
     <div className="min-h-screen bg-black flex items-center justify-center">
       <div className="bg-gray-900 p-8 rounded-lg w-full max-w-md">
-        <h1 className="text-2xl font-bold text-white text-center mb-6">Sign In</h1>
+        <h1 className="text-2xl font-bold text-white text-center mb-6">Admin Login</h1>
 
         <form onSubmit={handleSubmit} className="space-y-4">
           <div>
@@ -78,11 +78,8 @@ export default function SignIn() {
           </button>
         </form>
 
-        <p className="text-center text-white mt-4">
-          Don't have an account?{' '}
-          <Link href="/auth/signup" className="text-blue-400 hover:underline">
-            Sign Up
-          </Link>
+        <p className="text-center text-gray-500 text-sm mt-6">
+          Admin access only
         </p>
       </div>
     </div>

@@ -1,11 +1,11 @@
 import { NextAuthOptions } from 'next-auth';
-import { MongoDBAdapter } from '@auth/mongodb-adapter';
-import clientPromise from './mongodb';
 import CredentialsProvider from 'next-auth/providers/credentials';
-import bcrypt from 'bcryptjs';
+
+// Preset admin credentials
+const ADMIN_EMAIL = 'admin@andylukijr.com';
+const ADMIN_PASSWORD = 'Admin@2025';
 
 export const authOptions: NextAuthOptions = {
-  adapter: MongoDBAdapter(clientPromise),
   providers: [
     CredentialsProvider({
       name: 'credentials',
@@ -18,25 +18,17 @@ export const authOptions: NextAuthOptions = {
           return null;
         }
 
-        const client = await clientPromise;
-        const db = client.db('photography-portfolio');
-        const user = await db.collection('users').findOne({ email: credentials.email });
-
-        if (!user) {
-          return null;
+        // Check against preset admin credentials
+        if (credentials.email === ADMIN_EMAIL && credentials.password === ADMIN_PASSWORD) {
+          return {
+            id: '1',
+            email: ADMIN_EMAIL,
+            name: 'Admin',
+            role: 'admin',
+          };
         }
 
-        const isPasswordValid = await bcrypt.compare(credentials.password, user.password);
-
-        if (!isPasswordValid) {
-          return null;
-        }
-
-        return {
-          id: user._id.toString(),
-          email: user.email,
-          name: user.name,
-        };
+        return null;
       },
     }),
   ],
@@ -46,7 +38,7 @@ export const authOptions: NextAuthOptions = {
   callbacks: {
     session: async ({ session, token }) => {
       if (token?.sub) {
-        (session.user as any).id = token.sub;
+        (session.user as { id?: string }).id = token.sub as string;
       }
       return session;
     },
