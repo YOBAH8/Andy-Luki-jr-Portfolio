@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import Providers from "./components/providers";
+import Footer from "./components/Footer";
 
 export const metadata: Metadata = {
   title: "Photography Portfolio",
@@ -20,6 +21,7 @@ export default function RootLayout({
       <body className="antialiased font-mono">
         <Providers>
           {children}
+          <Footer />
         </Providers>
       </body>
     </html>
