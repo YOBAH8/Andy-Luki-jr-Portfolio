@@ -118,6 +118,7 @@ export default function Home() {
             <div className="mb-12 max-w-4xl mx-auto">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6 text-center">
                 <div className="bg-linear-to-r from-gray-800 to-black rounded-xl p-6 border border-gray-600 shadow-2xl hover:shadow-3xl transform hover:scale-105 transition-all duration-300">
+                  {/* eslint-disable-next-line react/no-unescaped-entities */}
                   <p className="text-white font-semibold text-sm">🏛️ Zambia's Sixth President H.E Edgar Chagwa Lungu's Photographer</p>
                 </div>
                 <div className="bg-linear-to-r from-gray-800 to-black rounded-xl p-6 border border-gray-600 shadow-2xl hover:shadow-3xl transform hover:scale-105 transition-all duration-300">
@@ -127,6 +128,7 @@ export default function Home() {
                   <p className="text-white font-semibold text-sm">🌟 Young Achieves Southern African Photographer of the Year 2025</p>
                 </div>
                 <div className="bg-linear-to-r from-gray-800 to-black rounded-xl p-6 border border-gray-600 shadow-2xl hover:shadow-3xl transform hover:scale-105 transition-all duration-300">
+                  {/* eslint-disable-next-line react/no-unescaped-entities */}
                   <p className="text-white font-semibold text-sm">💖 Your Girlfriend's Favourite Photographer</p>
                 </div>
               </div>

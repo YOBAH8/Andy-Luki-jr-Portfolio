@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import { useSession } from 'next-auth/react';
 import { useRouter } from 'next/navigation';
+import Image from 'next/image';
 import Dropdown from '@/app/components/dropdown';
 
 export default function Upload() {
@@ -110,10 +111,11 @@ export default function Upload() {
               <h2 className="text-xl font-semibold mb-4 text-white">Image Preview</h2>
               {file ? (
                 <div className="relative aspect-square rounded-lg overflow-hidden">
-                  <img
+                  <Image
                     src={URL.createObjectURL(file)}
                     alt="Preview"
-                    className="w-full h-full object-cover"
+                    fill
+                    className="object-cover"
                   />
                 </div>
               ) : (

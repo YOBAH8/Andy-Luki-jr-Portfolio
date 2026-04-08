@@ -22,7 +22,8 @@ export default function EditImages() {
             setImages([]);
           } else {
             // Filter images uploaded by the user
-            setImages(data.filter((img: any) => img.uploadedBy === (session.user as any)?.id));
+            const userId = (session.user as { id?: string })?.id;
+            setImages(data.filter((img: ImageType) => img.uploadedBy === userId));
           }
           setLoading(false);
         })

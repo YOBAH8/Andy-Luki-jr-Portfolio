@@ -3,6 +3,8 @@ import { getServerSession } from 'next-auth';
 import { authOptions } from '@/app/lib/auth';
 import { getImages, createImage } from '@/app/lib/database';
 import { Image } from '@/types';
+import fs from 'fs';
+import path from 'path';
 
 export async function GET() {
   if (!process.env.MONGODB_URI || process.env.MONGODB_URI.includes('yourusername') || process.env.MONGODB_URI.includes('yourcluster')) {
@@ -22,7 +24,7 @@ export async function GET() {
 export async function POST(request: NextRequest) {
   try {
     const session = await getServerSession(authOptions);
-    const userId = (session?.user as any)?.id;
+    const userId = (session?.user as { id?: string })?.id;
 
     if (!userId) {
       return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
@@ -41,8 +43,6 @@ export async function POST(request: NextRequest) {
     }
 
     // Save file
-    const fs = require('fs');
-    const path = require('path');
     const uploadsDir = path.join(process.cwd(), 'public', 'uploads');
     if (!fs.existsSync(uploadsDir)) {
       fs.mkdirSync(uploadsDir, { recursive: true });

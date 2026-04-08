@@ -36,7 +36,7 @@ export default function ImageDetail() {
   }, [id]);
 
   const handleLike = async () => {
-    const userId = (session?.user as any)?.id;
+    const userId = (session?.user as { id?: string })?.id;
     if (!userId || !image) return;
 
     const liked = image.likes.includes(userId);
@@ -91,7 +91,7 @@ export default function ImageDetail() {
     );
   }
 
-  const isLiked = session?.user ? image.likes.includes((session.user as any).id) : false;
+  const isLiked = session?.user ? image.likes.includes((session.user as { id: string }).id) : false;
 
   return (
     <div className="min-h-screen bg-linear-to-br from-black via-gray-900 to-black text-white">

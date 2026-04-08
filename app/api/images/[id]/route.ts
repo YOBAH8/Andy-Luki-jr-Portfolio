@@ -39,7 +39,7 @@ export async function DELETE(
     }
 
     // Check if the user owns the image
-    if (image.uploadedBy !== (session.user as any)?.id) {
+    if (image.uploadedBy !== (session.user as { id?: string })?.id) {
       return NextResponse.json({ error: 'Forbidden' }, { status: 403 });
     }
 

@@ -1,8 +1,9 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import { useSession } from 'next-auth/react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { Event } from '@/types';
 
 interface EventFormData {
@@ -50,11 +51,7 @@ export default function EventsPage() {
     isPublic: true,
   });
 
-  useEffect(() => {
-    fetchEvents();
-  }, []);
-
-  const fetchEvents = async () => {
+  const fetchEvents = useCallback(async () => {
     try {
       const url = isAdmin ? '/api/events?all=true' : '/api/events';
       const response = await fetch(url);
@@ -68,7 +65,11 @@ export default function EventsPage() {
     } finally {
       setLoading(false);
     }
-  };
+  }, [isAdmin]);
+
+  useEffect(() => {
+    fetchEvents();
+  }, [fetchEvents]);
 
   const handleInputChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
@@ -201,7 +202,7 @@ export default function EventsPage() {
           <div className="text-center mb-12">
             <h1 className="text-5xl font-light mb-4">Upcoming Events</h1>
             <p className="text-xl text-gray-300 max-w-2xl mx-auto">
-              Stay updated with my latest photography events, exhibitions, workshops, and where I'll be next.
+              Stay updated with my latest photography events, exhibitions, workshops, and where I&apos;ll be next.
             </p>
           </div>
 
@@ -235,6 +236,7 @@ export default function EventsPage() {
                     <button
                       onClick={() => setShowForm(false)}
                       className="text-gray-400 hover:text-white text-2xl"
+                      aria-label="Close form"
                     >
                       &times;
                     </button>
@@ -421,10 +423,11 @@ export default function EventsPage() {
                   {/* Event Image */}
                   {event.imageUrl && (
                     <div className="relative h-48 overflow-hidden">
-                      <img
+                      <Image
                         src={event.imageUrl}
                         alt={event.title}
-                        className="w-full h-full object-cover"
+                        fill
+                        className="object-cover"
                       />
                       <div className="absolute top-3 right-3">
                         <span className="px-3 py-1 bg-[#0C2340]/90 text-white text-sm rounded-full">
