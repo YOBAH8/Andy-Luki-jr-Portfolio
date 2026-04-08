@@ -36,3 +36,18 @@ export interface Download {
   userId?: string; // optional, for anonymous downloads
   timestamp: Date;
 }
+
+export interface Event {
+  _id?: ObjectId | string;
+  title: string;
+  description: string;
+  location: string;
+  date: Date;
+  time: string;
+  eventType: string; // e.g., "Wedding", "Portrait Session", "Exhibition", "Workshop"
+  imageUrl?: string;
+  registrationLink?: string;
+  isPublic: boolean;
+  createdBy: string; // user ID
+  createdAt: Date;
+}

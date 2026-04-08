@@ -1,7 +1,14 @@
 import type { Metadata } from "next";
+import { Great_Vibes } from "next/font/google";
 import "./globals.css";
 import Providers from "./components/providers";
 import Footer from "./components/Footer";
+
+const greatVibes = Great_Vibes({
+  subsets: ["latin"],
+  weight: "400",
+  variable: "--font-great-vibes",
+});
 
 export const metadata: Metadata = {
   title: "Photography Portfolio",
@@ -15,10 +22,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <head>
-        <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet" />
-      </head>
-      <body className="antialiased font-mono">
+      <body className={`${greatVibes.variable} antialiased font-mono`}>
         <Providers>
           {children}
           <Footer />

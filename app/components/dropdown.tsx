@@ -27,6 +27,14 @@ export default function Dropdown() {
             Home
           </Link>
 
+          <Link
+            href="/events"
+            className="block px-4 py-2 text-base font-mono font-bold text-white hover:bg-gray-700 text-center"
+            onClick={() => setIsOpen(false)}
+          >
+            Events
+          </Link>
+
           {session ? (
             <>
               <Link
